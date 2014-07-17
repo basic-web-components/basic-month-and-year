@@ -8,7 +8,7 @@
     "basic-element": "basic-web-components/basic-element#master",
     "basic-month-name": "basic-web-components/basic-month-name#master"
   },
-  "dev-dependencies": {
+  "devDependencies": {
     "basic-framed-content": "basic-web-components/basic-framed-content#master"
   },
   "keywords": [
