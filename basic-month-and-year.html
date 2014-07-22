@@ -1,5 +1,11 @@
 <!--
 Shows a culture's name for the current month and the year.
+
+To the degree possible, all language/culture-specific aspects of this component
+are localizable with the Globalize library (https://github.com/jquery/globalize).
+
+@element basic-month-and-year
+@demo http://basic-web-components.github.io/components/basic-month-and-year/
 -->
 
 <link rel="import" href="../basic-element/basic-element.html">
@@ -15,11 +21,25 @@ Shows a culture's name for the current month and the year.
 <script>
 Polymer( "basic-month-and-year", {
 
-  applyAuthorStyles: true,
+  /**
+   * The Globalize culture/language assigned to this element.
+   *
+   * @attribute culture
+   */
+  culture: null,
 
   cultureChanged: function() {
     this.$.monthName.culture = this.culture;
   },
+
+  /**
+   * The date controlling which month and year are shown in this element.
+   *
+   * @attribute date
+   * @type Date
+   * @default today
+   */
+  date: null,
 
   dateChanged: function() {
     var date = this.date;
