@@ -17,6 +17,11 @@ leaves alpha status.)
 <polymer-element name="basic-month-and-year" extends="basic-element" attributes="culture date">
 
 <template>
+  <style>
+  :host(.rtl) {
+    direction: rtl;
+  }
+  </style>
   <basic-month-name id="monthName"></basic-month-name>
   <span id="year"></span>
 </template>
@@ -33,6 +38,10 @@ Polymer( "basic-month-and-year", {
 
   cultureChanged: function() {
     this.$.monthName.culture = this.culture;
+
+    // Ensure the month-year order matches the direction of the text.
+    var rtl = this.culture ? this.culture.isRTL : false;
+    this.classList.toggle( "rtl", rtl );
   },
 
   /**
