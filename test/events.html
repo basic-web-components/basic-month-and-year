@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Events tests for basic-month-and-year</title>
+
+  <script src="../../webcomponentsjs/webcomponents.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../basic-month-and-year.html">
+</head>
+<body>
+
+  <!-- You use the document as a place to set up your fixtures. -->
+  <basic-month-and-year id="bmay1"></basic-month-and-year>
+
+  <script>
+  var bmay1 = document.querySelector('#bmay1');
+
+  suite('events', function() {
+
+    test('change', function(done) {
+      bmay1.addEventListener('change', function(e) {
+        var compareDate = new Date('3/14/15');
+        assert.deepEqual(bmay1.date, compareDate);
+        assert.equal(bmay1.$.monthName.month, bmay1.date.getMonth());
+        assert.equal(bmay1.$.year.textContent, bmay1.date.getFullYear());
+        done();
+      });
+
+      bmay1.date = new Date('3/14/15');
+      flush(function() {
+        bmay1.dispatchEvent(new CustomEvent('change'));
+      });
+    });
+
+  });
+  </script>
+
+</body>
+</html>

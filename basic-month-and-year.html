@@ -41,7 +41,7 @@ Polymer({
 
     // Ensure the month-year order matches the direction of the text.
     var rtl = this.culture ? this.culture.isRTL : false;
-    this.classList.toggle( "rtl", rtl );
+    this.classList.toggle('rtl', rtl);
   },
 
   /**
@@ -61,7 +61,7 @@ Polymer({
 
   ready: function() {
     this.super();
-    if ( !this.date ) {
+    if (!this.date) {
       // By default show the current month and year.
       this.date = new Date();
     }
